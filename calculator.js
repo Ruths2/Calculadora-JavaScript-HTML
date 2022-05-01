@@ -1,56 +1,61 @@
 function calculadora() {
   const operacao = Number(prompt('Escolha uma operação:\n 1- Somar\n 2- Subtrair\n 3- Dividir\n 4- Multiplicar'));
 
-  let n1 = Number(prompt('Insira o primeiro valor:'));
-  let n2 = Number(prompt('Insira o segundo valor:'));
-  let resultado;
-
-  function somar() {
-    resultado = n1 + n2;
-    alert(n1 + ' + ' + n2 + ' = ' + resultado);
-    novaOperacao();
-  }
-  
-  function subtrair(){
-    resultado = n1 - n2;
-    alert(n1 + ' - ' + n2 + ' = ' + resultado);
-    novaOperacao();
-  }
-  
-  function dividir() {
-    resultado = n1 / n2;
-    alert(n1 + ' / ' + n2 + ' = ' + resultado);
-    novaOperacao();
-  }
-  
-  function multiplicar(){
-    resultado = n1 * n2;
-    alert(n1 + ' * ' + n2 + ' = ' + resultado);
-    novaOperacao();
-  }
-  
-  function novaOperacao(){
-    let opcao = prompt('Deseja fazer uma nova operação?\n 1- Sim\n 2- Não');
+  if (!operacao || operacao >= 7 || operacao <=0) {
+    alert(String.fromCodePoint(0x2716) + ' Opção inválida - Digite uma opção válida');
+    calculadora();
+  }else {
+    let n1 = Number(prompt('Insira o primeiro valor:'));
+    let n2 = Number(prompt('Insira o segundo valor:'));
+    let resultado;
     
-    if(opcao == 1) {
-      calculadora();
-    }else if(opcao == 2){
-      alert('Muito obrigado ' + String.fromCodePoint(0x1F917) + '\nVolte sempre ' + String.fromCodePoint(0x2763));
-    }else{
-      alert('Opcao invalida');
+    function somar() {
+      resultado = n1 + n2;
+      alert(n1 + ' + ' + n2 + ' = ' + resultado);
       novaOperacao();
     }
-  }
 
-  if (operacao == 1) {
-    somar();
-  }else if (operacao == 2) {
-    subtrair();
-  }else if (operacao == 3) {
-    dividir();
-  }else if (operacao == 4) {
-    multiplicar();
+    function subtrair() {
+      resultado = n1 - n2;
+      alert(n1 + ' - ' + n2 + ' = ' + resultado);
+      novaOperacao();
+    }
+
+    function dividir() {
+      resultado = n1 / n2;
+      alert(n1 + ' / ' + n2 + ' = ' + resultado);
+      novaOperacao();
+    }
+
+    function multiplicar() {
+      resultado = n1 * n2;
+      alert(n1 + ' * ' + n2 + ' = ' + resultado);
+      novaOperacao();
+    }
+
+    function novaOperacao() {
+      let opcao = prompt('Deseja fazer uma nova operação?\n 1- Sim\n 2- Não');
+
+      if (opcao == 1) {
+        calculadora();
+      }else if (opcao == 2) {
+        alert('Muito obrigado ' + String.fromCodePoint(0x1F917) + '\nVolte sempre ' + String.fromCodePoint(0x2763));
+      }else {
+        alert('Opcao invalida');
+        novaOperacao();
+      }
+    }
+
+    if (operacao == 1) {
+      somar();
+    }else if (operacao == 2) {
+      subtrair();
+    }else if (operacao == 3) {
+      dividir();
+    }else if (operacao == 4) {
+      multiplicar();
+    }
   }
 }
-calculadora();
 
+calculadora();
